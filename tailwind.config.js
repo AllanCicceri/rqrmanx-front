@@ -14,7 +14,11 @@ module.exports = {
       azul:'#277DA1',
     },
   
-    extend: {},
+    extend: {
+      textColor:{
+        primary:"text-gray-600"
+      }
+    },
   },
 
   plugins: [],
