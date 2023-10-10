@@ -1,9 +1,16 @@
+import { GoFileDirectory } from 'react-icons/go';
 
-function ProjectsList() { 
+function ProjectsList() {
     return (
-        <div className="flex flex-col">
-            <header className="ml-4 text-gray-600">Projects</header>
-            <hr className="w-48 h-1 my-4 bg-gray-600 border-0 rounded md:my-10 dark:bg-gray-700"/>
+        <div className="flex flex-col h-2/3">
+            <header className="text-gray-600 ml-4 flex items-center">
+                <GoFileDirectory />
+                <p className='ml-2'>Projects</p>
+            </header>
+
+            <div className=''>
+                carregando...
+            </div>
 
         </div>
     );
