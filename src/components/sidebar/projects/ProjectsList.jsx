@@ -25,7 +25,7 @@ function ProjectsList() {
     }, [projects, setProjects]);
 
     return (
-        <div className="flex flex-col h-2/3">
+        <div className="flex flex-col h-[70%]">
             {/* Texto cabeçalho projetos */}
             <header className="text-gray-600 ml-4 flex items-center">
                 <GoFileDirectory />
@@ -33,7 +33,7 @@ function ProjectsList() {
             </header>
 
             {/* Lista de Projetos */}
-            <div className='flex flex-col p-6  overflow-auto scrollbar-hidden h-[90%]'>
+            <div className='flex flex-col pl-6 pr-2  overflow-auto scrollbar-hidden h-[90%]'>
                 {
                     projects.length <= 0 ? "Carregando..." :
                         (

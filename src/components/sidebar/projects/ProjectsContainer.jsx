@@ -5,7 +5,7 @@ import { ProjectCtxProvider } from "../../../context/ProjectsContext";
 function ProjectsContainer(){
     return (
         <ProjectCtxProvider>
-            <div className="h-full">
+            <div className="h-[70%]">
                 <ProjectsList/>
                 <ProjectForm/>
             </div>
