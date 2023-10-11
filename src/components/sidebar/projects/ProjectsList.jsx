@@ -4,8 +4,9 @@ import { ProjectContext } from '../../../context/ProjectsContext';
 import ProjectItem from './ProjectItem'
 
 
-function ProjectsList() {
+function ProjectsList({setShowForm}) {
     const [projects, setProjects] = useContext(ProjectContext)
+
 
 
     useEffect(() => {
@@ -24,6 +25,11 @@ function ProjectsList() {
         fetchProjetos()
     }, [projects, setProjects]);
 
+
+    function HandleDoubleClick(item){
+        setShowForm(true, item)
+    }
+
     return (
         <div className="flex flex-col h-[70%]">
             {/* Texto cabeçalho projetos */}
@@ -38,7 +44,7 @@ function ProjectsList() {
                     projects.length <= 0 ? "Carregando..." :
                         (
                             projects.map(item => (
-                                <ProjectItem key={item.id} titulo={item.nome} descricao={item.descricao} />
+                                <ProjectItem key={item.id} titulo={item.nome} descricao={item.descricao} HandleDoubleClick={() => HandleDoubleClick(item)}  />
                             ))
                         )
                 }
