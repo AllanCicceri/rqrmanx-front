@@ -34,8 +34,12 @@ export function SaveProject(project) {
 
 export async function GetAllProjects() {
     const response = await fetch('http://localhost:8080/projetos')
-    const data = await response.json()
-    return data
+    try{
+        const data = await response.json()
+        return data
+    }catch(error){
+        console.error(error)
+    }
 }
 
 export function DeleteProject(id) {
