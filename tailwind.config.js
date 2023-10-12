@@ -17,7 +17,11 @@ module.exports = {
     extend: {
       textColor:{
         primary:"text-gray-600"
+      },
+      boxShadow: {
+        '3xl': '32px 3px 31px -6px rgba(0,0,0,0.75)',
       }
+
     },
   },
 

@@ -1,7 +1,7 @@
 import ProjectsList from "./ProjectsList";
 import ProjectForm from "./ProjectForm";
-import { ProjectContext, ProjectCtxProvider } from "../../../context/ProjectsContext";
-import { useContext, useState } from "react";
+import { ProjectCtxProvider } from "../../../context/ProjectsContext";
+import { useState } from "react";
 
 
 function ProjectsContainer() {
@@ -10,7 +10,11 @@ function ProjectsContainer() {
 
 
     function HandleShowForm(show, selectedItem) {
-        setSelectedProject(selectedItem)
+        if(selectedItem === null){
+            setSelectedProject(null)
+        }else{
+            setSelectedProject(selectedItem)
+        }
         setShowForm(show)        
     }
 
