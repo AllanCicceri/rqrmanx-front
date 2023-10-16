@@ -12,7 +12,7 @@ module.exports = {
       vermelho:'#F94144',
       verde:'#90BE6D',
       amarelo:'#F9C74F',
-      azul:'#277DA1',
+      azul:'#498DE1',
     },
   
     extend: {
