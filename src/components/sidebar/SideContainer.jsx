@@ -4,7 +4,7 @@ import ProjectsContainer from "./projects/ProjectsContainer";
 
 function SideContainer(){
     return(
-        <div className="bg-branco h-screen w-1/5 flex flex-col">
+        <div className="bg-branco h-screen w-full md:w-1/5 flex flex-col">
             <LogoContainer/>
             <ProjectsContainer/>
             <UserContainer/>

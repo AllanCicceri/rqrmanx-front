@@ -1,11 +1,11 @@
 import SideContainer from "./components/sidebar/SideContainer";
-import RequirementsContainer from "./components/requirements/RequirementsContainer"
+import MainContainer from "./components/main/MainContainer"
 
 function App() {
   return (
-    <div className="w-screen h-screen bg-cinza flex">
+    <div className="w-screen h-screen bg-cinza flex flex-col md:flex-row">
       <SideContainer/>
-      <RequirementsContainer/>      
+      <MainContainer/>      
     </div>
   );
 }

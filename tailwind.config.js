@@ -7,6 +7,7 @@ module.exports = {
   theme: {
     backgroundColor: {
       cinza:'#F3F4F6',
+      cinzaEscuro: '#E8EAEE',
       branco:'#FFF',
       vermelho:'#F94144',
       verde:'#90BE6D',
