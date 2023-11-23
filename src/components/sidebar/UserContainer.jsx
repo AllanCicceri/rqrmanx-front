@@ -15,9 +15,9 @@ function UserContainer(){
 
     return(
         
-        <div className="h-[15%] flex justify-center items-center relative">
+        <div className="h-[15%] flex flex-col justify-center items-center relative">
             
-            <img src={UserImg} alt=""  className='h-12 w-12 bg-cinza rounded-full border-solid border-2 cursor-pointer' onClick={HandleClick}/>
+            <img src={UserImg} alt=""  className='h-12 w-12 p-1 mb-2 bg-cinza rounded-full border-solid border-2 cursor-pointer' onClick={HandleClick}/>
             {showUserManager?<UserManager/>:""}
             <div className='ml-2 text-gray-600'>{user}</div>
         </div>
