@@ -1,7 +1,7 @@
 import {BsFiletypePdf} from 'react-icons/bs'
 import MyButton from '../auxiliar/MyButton';
 
-function SelectedProject(){
+function SelectedProject({onclick}){
     return(
         <div className="text-gray-600 p-6 pr-8  h-[10%] flex justify-between  items-center"> 
                 <div className='flex items-center'>
@@ -11,13 +11,7 @@ function SelectedProject(){
                         <div className="text-sm">Descrição do projeto...</div>
                     </div>
                 </div>
-                <MyButton color={"bg-azul"} text={"+"}/>
-                
-                
-                
-                
-         
-                
+                <MyButton color={"bg-azul"} text={"+"} onClickFunction={() => onclick(true)}/>
             </div>
     )
 }

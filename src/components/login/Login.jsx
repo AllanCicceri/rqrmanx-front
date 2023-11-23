@@ -1,8 +1,35 @@
 import MyButton from "../auxiliar/MyButton";
 import Logo from '../../assets/logo.png'
+import { useContext, useState } from "react";
+import { ValidateUser } from "../../api/UsersEndPoint";
+import { UserCtx } from "../../context/UserContext";
 
-function Login({onclick}){
+
+function Login({setLoggedUser}){
     const inputStyle = "m-2 p-1 rounded-md border"
+    const [inputName, setInputName] = useState("")
+    const [inputPass, setInputPass] = useState("")
+    const [user,setUser] = useContext(UserCtx)
+
+    async function HandleClick(){
+        const userExists = await ValidateUser(inputName, inputPass)
+        
+        
+        if(userExists){
+            setLoggedUser(inputName)
+            setUser(inputName)
+            
+        }else{
+            alert("Usuário e Senha não econtrados!")
+        }
+    }
+
+    function HandleInputName(e){
+        setInputName(e.target.value)
+    }
+    function HandleInputPass(e){
+        setInputPass(e.target.value)
+    }
 
     return (
         <div className="w-screen h-screen flex">
@@ -17,9 +44,10 @@ function Login({onclick}){
             <div className="w-2/3 bg-cinza flex justify-center items-center">
                 <div className="w-1/3 h-1/3 bg-branco rounded-lg flex flex-col justify-center items-center shadow-lg">
                     <h2 className="text-4xl mb-2">Login</h2>
-                    <input type="text" className={inputStyle}/>
-                    <input type="text" className={inputStyle}/>
-                    <MyButton color="bg-azul" text="signin" onClickFunction={onclick}/>                    
+                    <input type="text" className={inputStyle} onChange={HandleInputName} value={inputName}/>
+                    <input type="text" className={inputStyle} onChange={HandleInputPass} value={inputPass}/>
+                    <button className="bg-azul p-2 " onClick={HandleClick}>SingIn</button>
+                    {/* <MyButton color="bg-azul" text="signin" onClickFunction={onclick}/>                     */}
                 </div>
             </div>
         </div>
