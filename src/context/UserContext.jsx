@@ -5,7 +5,7 @@ const UserCtx = createContext();
 
 // Provedor do contexto
 const UserCtxProvider = ({ children }) => {
-    const [user, setUser] = useState([]);
+    const [user, setUser] = useState({});
     
 
     return (

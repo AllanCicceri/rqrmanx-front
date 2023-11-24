@@ -1,5 +1,5 @@
 function MyButton({disabled, color, text, onClickFunction}){
-    let defaultStyle = "rounded-md text-white font-bold w-14 h-7 hover:scale-110 "
+    let defaultStyle = "rounded-md text-white font-bold w-16 h-7 hover:scale-110 "
 
     if(disabled){
         defaultStyle += "bg-cinza cursor-not-allowed"

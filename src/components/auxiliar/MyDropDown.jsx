@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-function MyDropdown (){
+function MyDropdown({ options, onChange }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState("All");
+  const [selected, setSelected] = useState(options[0]);
 
-  const dropItemStyle = "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+  const dropItemStyle = "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-bold"
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -12,6 +12,7 @@ function MyDropdown (){
 
   const handleDropDownItemClick = (item) => {
     setSelected(item)
+    onChange(item)
     toggleDropdown()
   }
 
@@ -20,7 +21,7 @@ function MyDropdown (){
     <div className="relative inline-block text-left">
       <button
         onClick={toggleDropdown}
-        className="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center"
+        className="bg-gray-600 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center"
       >
         <span className="mr-1">{selected}</span>
         <svg
@@ -32,17 +33,13 @@ function MyDropdown (){
         </svg>
       </button>
       {isOpen && (
-        <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+        <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-branco ring-1 ring-black ring-opacity-5">
           <div className="py-1">
-            <button className={dropItemStyle} onClick={() => handleDropDownItemClick("All")}>
-              All
-            </button>
-            <button className={dropItemStyle} onClick={() => handleDropDownItemClick("Functional")}>
-              Functional
-            </button>
-            <button className={dropItemStyle} onClick={() => handleDropDownItemClick("Non-functional")}>
-              Non-functional
-            </button>
+            {
+              options.map(opt => (
+                <button className={dropItemStyle} onClick={() => handleDropDownItemClick(opt)}>{opt}</button>
+              ))
+            }
           </div>
         </div>
       )}

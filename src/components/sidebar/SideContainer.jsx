@@ -1,5 +1,5 @@
 import LogoContainer from "./LogoContainer";
-import UserContainer from "./UserContainer";
+import UserContainer from "./user/UserContainer";
 import ProjectsContainer from "./projects/ProjectsContainer";
 import { UserCtx } from "../../context/UserContext";
 import { useContext } from "react";

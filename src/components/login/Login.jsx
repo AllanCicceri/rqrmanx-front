@@ -1,24 +1,25 @@
-import MyButton from "../auxiliar/MyButton";
 import Logo from '../../assets/logo.png'
 import { useContext, useState } from "react";
 import { ValidateUser } from "../../api/UsersEndPoint";
 import { UserCtx } from "../../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 
-function Login({setLoggedUser}){
+function Login({setUserLoggedIn}){
     const inputStyle = "m-2 p-1 rounded-md border"
     const [inputName, setInputName] = useState("")
     const [inputPass, setInputPass] = useState("")
     const [user,setUser] = useContext(UserCtx)
+    const navigate = useNavigate()
 
-    async function HandleClick(){
+    
+    async function HandleSignInClick(){
         const userExists = await ValidateUser(inputName, inputPass)
-        
-        
+       
         if(userExists){
-            setLoggedUser(inputName)
-            setUser(inputName)
-            
+            setUserLoggedIn(true)
+            setUser(userExists)
+            navigate('/')            
         }else{
             alert("Usuário e Senha não econtrados!")
         }
@@ -46,8 +47,7 @@ function Login({setLoggedUser}){
                     <h2 className="text-4xl mb-2">Login</h2>
                     <input type="text" className={inputStyle} onChange={HandleInputName} value={inputName}/>
                     <input type="text" className={inputStyle} onChange={HandleInputPass} value={inputPass}/>
-                    <button className="bg-azul p-2 " onClick={HandleClick}>SingIn</button>
-                    {/* <MyButton color="bg-azul" text="signin" onClickFunction={onclick}/>                     */}
+                    <button className="bg-azul p-2 " onClick={HandleSignInClick}>SignIn</button>
                 </div>
             </div>
         </div>
