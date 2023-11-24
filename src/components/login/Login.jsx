@@ -9,7 +9,7 @@ function Login({setUserLoggedIn}){
     const inputStyle = "m-2 p-1 rounded-md border"
     const [inputName, setInputName] = useState("")
     const [inputPass, setInputPass] = useState("")
-    const [user,setUser] = useContext(UserCtx)
+    const setUser = useContext(UserCtx)[1]
     const navigate = useNavigate()
 
     
@@ -47,7 +47,7 @@ function Login({setUserLoggedIn}){
                     <h2 className="text-4xl mb-2">Login</h2>
                     <input type="text" className={inputStyle} onChange={HandleInputName} value={inputName}/>
                     <input type="text" className={inputStyle} onChange={HandleInputPass} value={inputPass}/>
-                    <button className="bg-azul p-2 " onClick={HandleSignInClick}>SignIn</button>
+                    <button className="bg-azul p-2 rounded-lg text-white" onClick={HandleSignInClick}>SignIn</button>
                 </div>
             </div>
         </div>
