@@ -1,6 +1,5 @@
 import RequirementsHeader from "./requirements/RequirementsHeader";
 import RequirementsList from "./requirements/RequirementsList"
-import SelectedProject from "./SelectedProject";
 import RequirementsForm from "./requirements/RequirementsForm";
 import { useState } from "react";
 
