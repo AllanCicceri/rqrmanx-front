@@ -6,7 +6,7 @@ import { GetAllProjects, DeleteProject } from '../../../api/ProjectsEndPoint';
 import MyButton from '../../auxiliar/MyButton';
 
 function ProjectsList({ setShowForm }) {
-    const [projects, setProjects] = useContext(ProjectContext)
+    const [projects, setProjects, selectedProject, setSelectedProject] = useContext(ProjectContext)
     const [selectedItem,setSelectedItem] = useState(null)
 
 
@@ -28,6 +28,7 @@ function ProjectsList({ setShowForm }) {
 
     function HandleClick(id){
         setSelectedItem(id)
+        setSelectedProject(id)
     }
 
     function HandleDeleteButtonClick(){

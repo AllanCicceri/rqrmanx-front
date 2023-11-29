@@ -9,10 +9,18 @@ import { useState } from "react";
 function MainContainer() {
     const [showForm, setShowForm] = useState(false)
 
+    function HandleAddClick(show){
+        setShowForm(show)
+    }
+
     return (
         <div className="w-full h-full p-1 flex flex-col">
-            <RequirementsHeader/>
-            <RequirementsList/>
+            <RequirementsHeader onClick={HandleAddClick}/>
+            {
+                showForm ? 
+                <RequirementsForm onclickCancel={() => HandleAddClick(false)}/> :
+                <RequirementsList/>
+            }
         </div>
     )
 }

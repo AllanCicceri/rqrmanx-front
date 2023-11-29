@@ -6,14 +6,15 @@ import { useState } from "react";
 
 function ProjectsContainer() {
     const [showForm, setShowForm] = useState(false)
-    const [selectedProject, setSelectedProject] = useState(null)
+    const [selectProject, setSelectProject] = useState(null)
+    
 
 
     function HandleShowForm(show, selectedItem) {
         if(selectedItem === null){
-            setSelectedProject(null)
+            setSelectProject(null)
         }else{
-            setSelectedProject(selectedItem)
+            setSelectProject(selectedItem)
         }
         setShowForm(show)        
     }
@@ -21,20 +22,20 @@ function ProjectsContainer() {
     function RenderForm(){
         return (
             
-            <ProjectForm handleShowForm={HandleShowForm} selectedProject={selectedProject} /> 
+            <ProjectForm handleShowForm={HandleShowForm} selectedProject={selectProject} /> 
         )
     }
 
 
     return (
-        <ProjectCtxProvider>
+        
             <div className="h-[70%]">
                 {showForm ?
                     RenderForm():
                     <ProjectsList setShowForm={HandleShowForm} />
                 }
             </div>
-        </ProjectCtxProvider>
+        
     )
 }
 
