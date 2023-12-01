@@ -1,19 +1,35 @@
-import React, { createContext, useState } from 'react';
-
+import React, { createContext, useEffect, useRef, useState } from 'react';
+import { GetAllProjects } from '../api/ProjectsEndPoint';
 
 const ProjectContext = createContext();
 
-// Provedor do contexto
 const ProjectCtxProvider = ({ children }) => {
-    const [projects, setProjects] = useState([]);
-    const [selectedProject, setSelectedProject] = useState(null);
-    
+  const [projects, setProjects] = useState([]);
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [forceReload, setForceReload] = useState(false);
 
-    return (
-        <ProjectContext.Provider value={[projects, setProjects, selectedProject, setSelectedProject]}>
-            {children}
-        </ProjectContext.Provider>
-    );
+
+  useEffect(() => {
+    async function fetchProjetos() {
+      console.log("projectsContext")
+      const data = await GetAllProjects();
+      setProjects(data);
+    }
+
+    fetchProjetos();
+  }, [projects, selectedProject]); // Observa mudanças em selectedProject e forceReload
+
+
+
+  return (
+    <ProjectContext.Provider value={[projects, setProjects, selectedProject, setSelectedProject, setForceReload]}>
+      {children}
+    </ProjectContext.Provider>
+  );
 };
 
-export {ProjectContext, ProjectCtxProvider};
+
+
+
+
+export { ProjectContext, ProjectCtxProvider };

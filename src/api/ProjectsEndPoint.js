@@ -42,8 +42,10 @@ export async function GetAllProjects() {
     }
 }
 
-export function DeleteProject(id) {
+export async function DeleteProject(id) {
     let url = "http://localhost:8080/projetos"
+
+    console.log(id)
 
     if (id > 0) {
         url += `/${id}`

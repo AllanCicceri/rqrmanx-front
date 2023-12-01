@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { GoFileDirectory } from 'react-icons/go';
 import { ProjectContext } from '../../../context/ProjectsContext';
 import ProjectItem from './ProjectItem'
@@ -6,20 +6,23 @@ import { GetAllProjects, DeleteProject } from '../../../api/ProjectsEndPoint';
 import MyButton from '../../auxiliar/MyButton';
 
 function ProjectsList({ setShowForm }) {
-    const [projects, setProjects, selectedProject, setSelectedProject] = useContext(ProjectContext)
+    const [projects, setProjects, selectedProject, setSelectedProject, setForceReload] = useContext(ProjectContext)
     const [selectedItem,setSelectedItem] = useState(null)
+    const projectsRef = useRef(projects)
 
 
 
-    useEffect(() => {
-        async function fetchProjetos(){
-            const data = await GetAllProjects()
-            setProjects(data)
-        }
+    // useEffect(() => {
+    //     async function fetchProjetos(){
+    //         const data = await GetAllProjects()
+    //         setProjects(data)
+    //         projectsRef.current = data
+    //         console.log('PROJETCS')
+    //     }
 
-        fetchProjetos()
+    //     fetchProjetos()
 
-    }, [projects, setProjects]);
+    // }, [projectsRef, selectedProject]);
 
 
     function HandleShowForm(item) {
@@ -31,11 +34,12 @@ function ProjectsList({ setShowForm }) {
         setSelectedProject(id)
     }
 
-    function HandleDeleteButtonClick(){
+    async function HandleDeleteButtonClick(){
         if(selectedItem !== null) {
             const deleteSelectedProject = window.confirm("Confirma a exclusão do projeto selecionado?")
             if(deleteSelectedProject){
-                DeleteProject(selectedItem)                
+                DeleteProject(selectedProject) 
+                setForceReload(true)                               
             }
         }
     }
