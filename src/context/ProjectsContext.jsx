@@ -11,13 +11,13 @@ const ProjectCtxProvider = ({ children }) => {
 
   useEffect(() => {
     async function fetchProjetos() {
-      console.log("projectsContext")
+      // console.log("projectsContext")"AQUI"
       const data = await GetAllProjects();
       setProjects(data);
     }
 
     fetchProjetos();
-  }, [projects, selectedProject]); // Observa mudanças em selectedProject e forceReload
+  }, [selectedProject, projects]); // Observa mudanças em selectedProject e forceReload
 
 
 

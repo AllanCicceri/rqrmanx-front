@@ -4,14 +4,16 @@ import { ProjectContext } from '../../../context/ProjectsContext';
 import { GetRequirementsFromProject } from '../../../api/RequirementsEndPoint';
 import { RequirementContext } from '../../../context/RequirementsContext';
 
-function RequirementsList() {
-    const [requirements, setRequirements] = useState([]);
+function RequirementsList({HandleAddClick}) {
+    // const [requirements, setRequirements] = useState([]);
+    
     const [projects, setProjects, selectedProject, setSelectedProject] = useContext(ProjectContext);
+    const [requirements, setRequirements, selectedRequirement, setSelectedRequirement] = useContext(RequirementContext)
     
 
     useEffect(() => {
 
-        console.log("RequirementsList")
+        // console.log("RequirementsList")"AQUI"
     
         const fetchData = async () => {
             const data = await GetRequirementsFromProject(selectedProject);
@@ -24,7 +26,7 @@ function RequirementsList() {
         }
 
 
-    }, [selectedProject, requirements])
+    }, [selectedProject, requirements,selectedRequirement])
 
 
 
@@ -42,7 +44,7 @@ function RequirementsList() {
 
                     </div> :
                     requirements.map(item => (
-                        <RequirementsItem key={item.id} item={item} />
+                        <RequirementsItem key={item.id} item={item} onClick={HandleAddClick}/>
                     ))
                 
             }
